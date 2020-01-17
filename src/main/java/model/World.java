@@ -21,15 +21,16 @@ public class World {
     public void printWorld() {
         for (int i = 0; i < worldX; i++) {
             for (int j = 0; j < worldY; j++) {
-                if (i == organisms.get(0).getPosition().getX() && j == organisms.get(0).getPosition().getY()) {
-                    System.out.print("O");
-                } else {
+                if(getOrganism(new Position(i,j)) != null)
+                {
+                    System.out.print("o");
+                }
+                else {
                     System.out.print(".");
                 }
             }
             System.out.println();
         }
-
     }
 
     public boolean positionOnBoard(Position position) {
@@ -51,6 +52,26 @@ public class World {
         }
         allPositions.removeIf(p -> !positionOnBoard(p));
         return allPositions;
+    }
+
+    public Organism getOrganism(Position position) {
+        Organism organism = null;
+        for (Organism o: organisms) {
+            if(o.getPosition().equals(position)){
+                organism = o;
+                break;
+            }
+        }
+        return organism;
+    }
+
+    public void makeTurn() {
+        for (Organism o :organisms) {
+            if(getOrganism(o.move()) != null) {
+                o.collision();
+            }
+            o.setPosition(o.move());
+        }
     }
 
 
