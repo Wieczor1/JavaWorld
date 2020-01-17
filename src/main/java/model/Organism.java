@@ -51,6 +51,10 @@ public class Organism {
         return null;
     }
 
+    public collision() {
+
+    }
+
 
     private int power;
     private int initiative;
