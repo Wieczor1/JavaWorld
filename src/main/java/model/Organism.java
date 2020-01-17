@@ -51,13 +51,10 @@ public class Organism {
         return null;
     }
 
-<<<<<<< HEAD
-=======
-    public collision() {
+//    public collision() {
+////
+//    }
 
-    }
-
->>>>>>> 5666893cc663849a1565ed7631fbc8b953a47ef4
 
     private int power;
     private int initiative;
